@@ -112,11 +112,13 @@ public class SwiftPhotoGalleryCell: UICollectionViewCell, UIScrollViewDelegate {
     private func setZoomScale() {
         let imageViewSize = imageView.bounds.size
         let scrollViewSize = scrollView.bounds.size
-        let widthScale = scrollViewSize.width / imageViewSize.width
+        let widthScale = String(format: "%.2f", scrollViewSize.width / imageViewSize.width)
         let heightScale = scrollViewSize.height / imageViewSize.height
-
-        scrollView.minimumZoomScale = min(widthScale, heightScale)
+        
+        let fl: CGFloat = CGFloat((widthScale as NSString).doubleValue)
+        scrollView.minimumZoomScale = min(fl, heightScale)
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
     }
+
     
 }
